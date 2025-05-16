@@ -2,15 +2,14 @@ package Entidades.Classes_Animais;
 
 import Entidades.Dono;
 
-public class Gato {
+public class Passaro {
     public String nome;
     public int idade;
     public Dono Dono;
 
-    public Gato(String nome, int idade, Dono dono) {
+    public Passaro(String nome, int idade, Dono dono) {
         this.nome = nome;
         this.idade = idade;
         this.Dono = dono;
     }
-    
 }
