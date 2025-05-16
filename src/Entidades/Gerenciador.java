@@ -1,25 +1,20 @@
-package Executor;
+package Entidades;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Programa {
-    public static void main(String[] args) {
-        // Váriaveis iniciais
+public class Gerenciador implements AnimalInterface {
+
+    private List<Animal> listaAnimais = new ArrayList<>();
+
+    @Override
+    public void cadastrar() {
         int op;
-
-        // Menu de opções
-        Scanner sc = new Scanner(System.in);
 
         do {
 
-            System.out.println("---== MENU DE OPÇÕES ==---");
-            System.out.println("1 - Cadastrar animal no sistema");
-            System.out.println("2 - Alterar informações do animal");
-            System.out.println("3 - Remover animal do sistema");
-            System.out.println("0 - Sair");
-            System.out.println("Escolha uma opção: ");
-            op = sc.nextInt();
-
+            System.out.println("---== MENU DE CADASTRO ==---");
+         
             System.out.printf("\n\n\n\n");
             switch (op) {
                 case 1:
@@ -41,7 +36,20 @@ public class Programa {
 
             System.out.printf("\n\n\n\n");
         } while (op != 0);
+    }
 
-        sc.close();
+     @Override
+    public void alterar() {
+        
+    }
+
+     @Override
+    public void remover() {
+        
+    }
+
+     @Override
+    public void listar() {
+        
     }
 }
