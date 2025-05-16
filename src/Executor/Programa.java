@@ -9,15 +9,17 @@ public class Programa {
 
         // Menu de opções
         Scanner sc = new Scanner(System.in);
-        System.out.println("---== MENU DE OPÇÕES ==---");
-        System.out.println("1 - Cadastrar animal no sistema");
-        System.out.println("2 - Alterar informações do animal");
-        System.out.println("3 - Remover animal do sistema");
-        System.out.println("0 - Sair");
-        System.out.print("Escolha uma opção: ");
-        op = sc.nextInt();
 
         do {
+
+            System.out.println("---== MENU DE OPÇÕES ==---");
+            System.out.println("1 - Cadastrar animal no sistema");
+            System.out.println("2 - Alterar informações do animal");
+            System.out.println("3 - Remover animal do sistema");
+            System.out.println("0 - Sair");
+            System.out.println("Escolha uma opção: ");
+            op = sc.nextInt();
+
             switch (op) {
                 case 1:
                     System.out.println("Você escolheu a opção 1");
