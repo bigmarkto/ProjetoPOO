@@ -14,6 +14,7 @@ public class Programa {
 
         // Instancia o gerenciador de animais
         GerenciadorAnimal gerenciador = new GerenciadorAnimal();
+        gerenciador.iniciarSistema();
 
         do {
 

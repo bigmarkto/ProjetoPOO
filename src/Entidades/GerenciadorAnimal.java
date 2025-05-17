@@ -84,7 +84,8 @@ public class GerenciadorAnimal implements AnimalInterface {
                 System.out.println("Animal não encontrado!");
                 continue;
             }
-
+            
+            System.out.println("Animal Selecionado: " + getById(ID).getNome());
             System.out.println("Qual aspecto deseja alterar? \n 1 - Nome \n 2 - Idade \n 3- Dono");
             aspecto = sc.nextInt();
             sc.nextLine();
@@ -134,12 +135,13 @@ public class GerenciadorAnimal implements AnimalInterface {
     }
 
 
-    private static void criarAnimaisExemplo() {
+    public void iniciarSistema() {
         // TODO: MARCO
         // O sistema deve gerar pelo menos 7 objetos de cada classe aleatorios quando iniciado
         // 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7 coelhos)
         // e vai adicionar na listaAnimais
         // Exemplo: listaAnimais.add(new Cachorro("Rex", 5, new Dono("João")));
+
     }
         
 }
