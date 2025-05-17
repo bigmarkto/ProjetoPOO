@@ -1,13 +1,14 @@
 package Entidades.Classes_Animais;
+import Entidades.Dono;
+import Entidades.Animal;
 
 public class Cachorro extends Animal {
 
-    public String nome;
-    public int idade;
-    public String Dono;
+    private String nome;
+    private int idade;
+    private Dono Dono;
 
-    public Cachorro(String nome, int idade, String dono) {
+    public Cachorro(String nome, int idade, Dono dono) {
         super(nome, idade, dono);
     }
-    
 }
