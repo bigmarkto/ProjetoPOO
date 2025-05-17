@@ -9,13 +9,18 @@ public abstract class Animal {
      private Dono dono;
      
      
+     
      public Animal(String nome, int idade, Dono dono) {
           this.nome = nome;
           this.idade = idade;
           this.dono = dono;
           this.id = idStatico++;
-          System.out.println("Animal criado com ID: " + this.id);
+          System.out.println("Animal criado com sucesso com ID: " + this.id);
      }
+
+     public String getTipo() {
+          return this.getClass().getSimpleName();
+     };
     
      // Getters e Setters
      public String getNome() {

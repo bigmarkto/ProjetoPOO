@@ -6,4 +6,7 @@ public interface AnimalInterface  {
     public void alterar();
     public void remover();
     public void listar();
+    public void listar(int tipo);
+    public void buscar();
+    
 }

@@ -6,9 +6,13 @@ public class Gato extends Animal {
     private String nome;
     private int idade;
     private Dono Dono;
-    private int id;
 
     public Gato(String nome, int idade, Dono dono) {
         super(nome, idade, dono);
+    }
+
+    @Override
+    public String getTipo() {
+        return "Gato";
     }
 }

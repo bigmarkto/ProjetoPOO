@@ -22,7 +22,8 @@ public class Programa {
             System.out.println("1 - Cadastrar animal no sistema");
             System.out.println("2 - Alterar informações do animal");
             System.out.println("3 - Listar animais do sistema");
-            System.out.println("4 - Remover animal do sistema");
+             System.out.println("4 - Buscar animais no sistema");
+            System.out.println("5 - Remover animal do sistema");
             System.out.println("0 - Sair");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
@@ -40,6 +41,9 @@ public class Programa {
                     System.out.println("Você escolheu a opção 3");
                     break;
                 case 4:
+                    gerenciador.buscar();
+                    break;
+                    case 5:
                     System.out.println("Você escolheu a opção 4");
                     break;
                 case 0:
