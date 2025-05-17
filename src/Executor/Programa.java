@@ -2,6 +2,8 @@ package Executor;
 
 import java.util.Scanner;
 
+import Entidades.GerenciadorAnimal;
+
 public class Programa {
     public static void main(String[] args) {
         // Váriaveis iniciais
@@ -9,6 +11,9 @@ public class Programa {
 
         // Menu de opções
         Scanner sc = new Scanner(System.in);
+
+        // Instancia o gerenciador de animais
+        GerenciadorAnimal gerenciador = new GerenciadorAnimal();
 
         do {
 
@@ -23,7 +28,7 @@ public class Programa {
             System.out.printf("\n\n\n\n");
             switch (op) {
                 case 1:
-                    System.out.println("Você escolheu a opção 1");
+                    gerenciador.cadastrar();
                     break;
                 case 2:
                     System.out.println("Você escolheu a opção 2");

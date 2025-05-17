@@ -1,5 +1,7 @@
 package Entidades;
 
+import Entidades.Classes_Animais.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,10 +33,10 @@ public class GerenciadorAnimal implements AnimalInterface {
 
             switch (tipo) {
                 case 1:
-                  //  listaAnimais.add(new Cachorro(nome, idade, donoAnimal));
+                    listaAnimais.add(new Cachorro(nome, idade, donoAnimal));
                     break;
                 case 2:
-                  //  listaAnimais.add(new Gato(nome, idade, donoAnimal));
+                    listaAnimais.add(new Gato(nome, idade, donoAnimal));
                     break;
                 case 3:
                   //  listaAnimais.add(new Peixe(nome, idade, donoAnimal));
@@ -46,7 +48,8 @@ public class GerenciadorAnimal implements AnimalInterface {
                     System.out.println("Animal não permitido!");
             }
 
-
+            System.out.println("Deseja cadastrar outro animal? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
         } while (op != 0);
     }
 
