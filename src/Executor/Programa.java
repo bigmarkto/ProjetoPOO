@@ -15,9 +15,6 @@ public class Programa {
         // Instancia o gerenciador de animais
         GerenciadorAnimal gerenciador = new GerenciadorAnimal();
 
-
-        // O sistema deve gerar pelo menos 7 objetos de cada classe aleatorios quando iniciado TODO: MARCO
-
         do {
 
             System.out.println("---== MENU DE OPÇÕES ==---");
