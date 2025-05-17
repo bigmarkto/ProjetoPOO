@@ -2,8 +2,6 @@ package Entidades.Classes_Animais;
 import Entidades.Dono;
 import Entidades.Animal;
 
-import Entidades.Animal;
-
 public class Peixe extends Animal {
     private String nome;
     private int idade;
