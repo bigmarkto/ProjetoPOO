@@ -10,6 +10,8 @@ public class GerenciadorAnimal implements AnimalInterface {
     private static List<Animal> listaAnimais = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
+
+
     // Funções para o auxilio da alteração de dados dos animais
     private static Animal getById(Integer id) {
         for (Animal animal : listaAnimais) {
@@ -118,10 +120,26 @@ public class GerenciadorAnimal implements AnimalInterface {
      @Override
     public void remover() {
         // TODO: MARCO
+
+        // Pegar qual animal deseja remover
+        // Verificar se o animal existe
+        // Verificar se ele estar na lista, pegar ele da lista e remover
     }
 
      @Override
     public void listar() {
         // TODO: MARCO
+        // Mostrar todos so animais em formato tabular
+        // --- ID --- | --- Nome --- | --- Idade --- | --- Dono --- | --- Tipo ---
     }
+
+
+    private static void criarAnimaisExemplo() {
+        // TODO: MARCO
+        // O sistema deve gerar pelo menos 7 objetos de cada classe aleatorios quando iniciado
+        // 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7 coelhos)
+        // e vai adicionar na listaAnimais
+        // Exemplo: listaAnimais.add(new Cachorro("Rex", 5, new Dono("João")));
+    }
+        
 }
