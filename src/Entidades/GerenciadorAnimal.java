@@ -105,7 +105,7 @@ public class GerenciadorAnimal implements AnimalInterface {
                     listaAnimais.add(new Passaro(nome, idade, donoAnimal));
                     break;
                 case 5:
-                    // listaAnimais.add(new Coelho(nome, idade, donoAnimal)); TODO: MARCO
+                    listaAnimais.add(new Coelho(nome, idade, donoAnimal));
                     break;
                 default:
                     System.out.println("Animal não permitido!");
@@ -168,8 +168,26 @@ public class GerenciadorAnimal implements AnimalInterface {
         // TODO: MARCO
 
         // Pegar qual animal deseja remover
+            int op = 1;
+            do {
+                System.out.println("---== MENU DE REMOÇÃO ==---");
+                System.out.println("Qual o ID do animal que deseja remover? ");
+                    int id = sc.nextInt();
+
+            
+
         // Verificar se o animal existe
         // Verificar se ele estar na lista, pegar ele da lista e remover
+        Animal animal = getById(id);
+            if (animal == null) {
+                System.out.println("Animal não encontrado!");
+            } else {
+                listaAnimais.remove(animal);
+                System.out.println("Animal removido com sucesso!");
+            }
+            System.out.println("Deseja remover outro animal? \n1 - Sim \n0 - Não");
+            op = sc.nextInt();
+        } while (op != 0);
     }
 
     @Override
@@ -178,12 +196,52 @@ public class GerenciadorAnimal implements AnimalInterface {
         // TODO: MARCO
         // Mostrar todos so animais em formato tabular
         // --- ID --- | --- Nome --- | --- Idade --- | --- Dono --- | --- Tipo ---
+        if (listaAnimais.isEmpty()) {
+            System.out.println("Nenhum animal cadastrado.");
+            return;
+        }
+
+        System.out.println("---== LISTA DE ANIMAIS ==---");
+        System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
+        System.out.println("|-----|------------|-------|------------|------------|");
+            for (Animal animal : listaAnimais) {
+                System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono(), getNome(), animal.getTipo());
+        }
+
     }
 
     // Listar por tipo
     @Override
     public void listar(int tipo) {
         // TODO: MARCO
+        boolean encontrou = false;
+        String tipoAnimal = "";
+        switch (tipo) {
+            case 1: tipoAnimal = "Cachorro"; break;
+            case 2: tipoAnimal = "Gato"; break;
+            case 3: tipoAnimal = "Peixe"; break;
+            case 4: tipoAnimal = "Pássaro"; break;
+            case 5: tipoAnimal = "Coelho"; break;
+            default:
+                System.out.println("Tipo inválido!");
+                return;
+        }
+
+        System.out.println("---== LISTA DE " + tipoAnimal.toUpperCase() + "S ==---");
+        System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
+        System.out.println("|-----|------------|-------|------------|------------|");
+        for (Animal animal : listaAnimais) {
+            if (animal.getTipo().equalsIgnoreCase(tipoAnimal)) {
+                System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n",
+                        animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono().getNome(),
+                        animal.getTipo());
+                encontrou = true;
+            }
+        }
+        if (!encontrou) {
+            System.out.println("Nenhum " + tipoAnimal + " encontrado.");
+        }
+
     }
 
     public void buscar() {
@@ -226,13 +284,53 @@ public class GerenciadorAnimal implements AnimalInterface {
 
     public void iniciarSistema() {
         // TODO: MARCO
-        // O sistema deve gerar pelo menos 7 objetos de cada classe aleatorios quando
-        // iniciado
         // 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7
         // coelhos)
         // e vai adicionar na listaAnimais
         // Exemplo: listaAnimais.add(new Cachorro("Rex", 5, new Dono("João")));
+            String[] nomesCachorro = {"Rex", "Luna", "Max", "Bella", "Toby", "Nina", "Rocky"};
+            String[] nomesGato = {"Miau", "Simba", "Lola", "Tigrinha", "Ginger", "Salem", "Felix"};
+            String[] nomesPeixe = {"Nemo", "Bubbles", "Goldie", "Finny", "Splash", "Coral", "Dory"};
+            String[] nomesPassaro = {"Piu", "Tweety", "Sky", "Sunny", "Blue", "Kiwi", "Rio"};
+            String[] nomesCoelho = {"Floquinho", "Cenoura", "Snowball", "Bunny", "Puffy", "Hopper", "Marshmallow"};
+            String[] nomesDonos = {"João", "Maria", "Ana", "Pedro", "Lucas", "Sofia", "Clara"};
+                Random random = new Random();
 
+        // Adiciona 7 animais de cada tipo
+        for (int i = 0; i < 7; i++) {
+            // Cachorros
+            listaAnimais.add(new Cachorro(
+                    nomesCachorro[i],
+                    random.nextInt(10) + 1,
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
+            ));
+            // Gatos
+            listaAnimais.add(new Gato(
+                    nomesGato[i],
+                    random.nextInt(10) + 1,
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
+            ));
+            // Peixes
+            listaAnimais.add(new Peixe(
+                    nomesPeixe[i],
+                    random.nextInt(5) + 1,
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
+            ));
+            // Pássaros
+            listaAnimais.add(new Passaro(
+                    nomesPassaro[i],
+                    random.nextInt(8) + 1,
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
+            ));
+            // Coelhos
+            listaAnimais.add(new Coelho(
+                    nomesCoelho[i],
+                    random.nextInt(6) + 1,
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
+            ));
+        }
+        
+    }
     }
 
 }
