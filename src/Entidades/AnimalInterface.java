@@ -1,7 +1,12 @@
 package Entidades;
 
 public interface AnimalInterface  {
-    // Métodos
+    
+    /**
+    * Métodos a serem implementados pelas classes que implementarem essa interface
+    * Cadastrar, alterar, remover, listar e buscar animais
+    */
+    
     public void cadastrar();
     public void alterar();
     public void remover();

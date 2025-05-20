@@ -11,6 +11,11 @@ public class Passaro extends Animal {
         super(nome, idade, dono);
     }
 
+/**
+ * Retorna o tipo do animal como uma string.
+ *
+ * @return A string "Passaro" indicando o tipo do animal.
+ */
     @Override
     public String getTipo() {
         return "Passaro";

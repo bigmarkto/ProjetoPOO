@@ -10,10 +10,18 @@ import java.util.Random;
 
 
 public class GerenciadorAnimal implements AnimalInterface {
+    
+    // Atributos
     private static List<Animal> listaAnimais = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
-    // Funções para o auxilio da alteração de dados dos animais
+    /** Funções para o auxilio da alteração de dados dos animais
+    *
+    * Procura um animal pela sua ID e retorna ele.
+    * 
+    * @param id A ID do animal a ser procurado.
+    * @return O animal encontrado ou null caso n o encontre.
+    */
     private static Animal getById(Integer id) {
         for (Animal animal : listaAnimais) {
             if (animal.getId() == id) {
@@ -23,6 +31,12 @@ public class GerenciadorAnimal implements AnimalInterface {
         return null;
     }
 
+    /**
+     * Procura um animal pelo seu nome e exibe suas informações 
+     * em formato tabular se encontrado.
+     *
+     * @param nome O nome do animal a ser procurado.
+     */
     private static void getByNome(String nome) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
@@ -40,6 +54,12 @@ public class GerenciadorAnimal implements AnimalInterface {
         }
     }
 
+    /**
+     * Procura um animal pelo seu dono e exibe suas informações 
+     * em formato tabular se encontrado.
+     *
+     * @param dono O nome do dono do animal a ser procurado.
+     */
     private static void getByDono(String dono) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
@@ -57,6 +77,12 @@ public class GerenciadorAnimal implements AnimalInterface {
         }
     }
 
+    /**
+     * Procura um animal pela sua idade e exibe suas informa es
+     * em formato tabular se encontrado.
+     *
+     * @param idade A idade do animal a ser procurado.
+     */
     private static void getByIdade(Integer idade) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
@@ -74,6 +100,14 @@ public class GerenciadorAnimal implements AnimalInterface {
         }
     }
 
+    /**
+     * Cadastra um novo animal.
+     *
+     * Mostra um menu para escolher o tipo do animal e
+     * suas informações. Após preencher as informações,
+     * o usuário é perguntado se deseja cadastrar outro
+     * animal.
+     */
     @Override
     public void cadastrar() {
         String nome, dono;
@@ -120,6 +154,13 @@ public class GerenciadorAnimal implements AnimalInterface {
         } while (op != 0);
     }
 
+    /**
+     * Altera as informações de um animal existente.
+     *
+     * Exibe um menu para selecionar o ID do animal e o aspecto que se deseja alterar 
+     * (nome, idade ou dono). Após a alteração, o usuário é perguntado se deseja 
+     * alterar outro animal.
+     */
     @Override
     public void alterar() {
         String dono, nome;
@@ -166,9 +207,15 @@ public class GerenciadorAnimal implements AnimalInterface {
         } while (op != 0);
     }
 
+    /**
+     * Remove um animal existente.
+     *
+     * Exibe um menu para selecionar o ID do animal a ser removido. 
+     * Após a remoção, mostra a mensagem de sucesso e após, o usuario é perguntado se deseja
+     * remover outro animal.
+     */
     @Override
     public void remover() {
-        // TODO: MARCO
 
         // Pegar qual animal deseja remover
             int op = 1;
@@ -193,12 +240,15 @@ public class GerenciadorAnimal implements AnimalInterface {
         } while (op != 0);
     }
 
+    /**
+     * Exibe todos os animais cadastrados em formato tabular.
+     * 
+     * Se a lista de animais estiver vazia, exibe a mensagem "Nenhum animal cadastrado."
+     * Caso contrário, exibe a tabela com as colunas ID, Nome, Idade, Dono e Tipo.
+     */
     @Override
     // Listar todos os animais
     public void listar() {
-        // TODO: MARCO
-        // Mostrar todos so animais em formato tabular
-        // --- ID --- | --- Nome --- | --- Idade --- | --- Dono --- | --- Tipo ---
         if (listaAnimais.isEmpty()) {
             System.out.println("Nenhum animal cadastrado.");
             return;
@@ -211,12 +261,26 @@ public class GerenciadorAnimal implements AnimalInterface {
                 System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono().getNome(), animal.getTipo());
         }
 
-    }
-
-    // Listar por tipo
+    } 
+    
+    /**
+     * Listar por tipo
+     * 
+     * Exibe todos os animais de um tipo específico em formato tabular.
+     * 
+     * O tipo do animal é determinado pelo parâmetro `tipo`, que deve
+     * corresponder a um dos seguintes valores: 1 (Cachorro), 2 (Gato),
+     * 3 (Peixe), 4 (Pássaro), ou 5 (Coelho). Se um tipo inválido for 
+     * fornecido, uma mensagem de erro será exibida.
+     * 
+     * Se não houver animais do tipo especificado, uma mensagem 
+     * indicando que nenhum animal foi encontrado será exibida.
+     * 
+     * @param tipo O código numérico representando o tipo de animal a ser listado.
+     */
     @Override
     public void listar(int tipo) {
-        // TODO: MARCO
+       
         boolean encontrou = false;
         String tipoAnimal = "";
         switch (tipo) {
@@ -247,6 +311,14 @@ public class GerenciadorAnimal implements AnimalInterface {
 
     }
 
+    /**
+     * Realiza a busca de animais com base no critério escolhido pelo usuário.
+     *
+     * Exibe um menu para o usuário selecionar o critério de busca: nome, idade ou dono.
+     * Após selecionar o critério, solicita ao usuário o valor correspondente para busca 
+     * e exibe os animais encontrados utilizando métodos específicos de busca.
+     * O usuário é perguntado se deseja realizar outra busca após cada operação.
+     */
     public void buscar() {
         int op = 1;
 
@@ -285,12 +357,13 @@ public class GerenciadorAnimal implements AnimalInterface {
         } while (op != 0);
     }
 
+    /**
+     * Inicializa o sistema com 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7 coelhos).
+     * 
+     * Os animais são cadastrados com nome, idade e dono aleatórios.
+     */
     public void iniciarSistema() {
-        // TODO: MARCO
-        // 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7
-        // coelhos)
-        // e vai adicionar na listaAnimais
-        // Exemplo: listaAnimais.add(new Cachorro("Rex", 5, new Dono("João")));
+       
             String[] nomesCachorro = {"Rex", "Luna", "Max", "Bella", "Toby", "Nina", "Rocky"};
             String[] nomesGato = {"Miau", "Simba", "Lola", "Tigrinha", "Ginger", "Salem", "Felix"};
             String[] nomesPeixe = {"Nemo", "Bubbles", "Goldie", "Finny", "Splash", "Coral", "Dory"};
