@@ -1,10 +1,13 @@
 package Entidades;
 
 import Entidades.Classes_Animais.*;
-
+import Entidades.Animal;
+import Entidades.Dono;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class GerenciadorAnimal implements AnimalInterface {
     private static List<Animal> listaAnimais = new ArrayList<>();
@@ -205,7 +208,7 @@ public class GerenciadorAnimal implements AnimalInterface {
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
         System.out.println("|-----|------------|-------|------------|------------|");
             for (Animal animal : listaAnimais) {
-                System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono(), getNome(), animal.getTipo());
+                System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono().getNome(), animal.getTipo());
         }
 
     }
@@ -331,6 +334,6 @@ public class GerenciadorAnimal implements AnimalInterface {
         }
         
     }
-    }
+    
 
 }

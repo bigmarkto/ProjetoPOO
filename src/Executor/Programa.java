@@ -22,12 +22,13 @@ public class Programa {
             System.out.println("1 - Cadastrar animal no sistema");
             System.out.println("2 - Alterar informações do animal");
             System.out.println("3 - Listar animais do sistema");
-             System.out.println("4 - Buscar animais no sistema");
+            System.out.println("4 - Buscar animais no sistema");
             System.out.println("5 - Remover animal do sistema");
+            System.out.println("6 - Listar animais por tipo");
             System.out.println("0 - Sair");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
-            
+            sc.nextLine();
 
             System.out.printf("\n\n\n\n");
             switch (op) {
@@ -38,14 +39,29 @@ public class Programa {
                     gerenciador.alterar();
                     break;
                 case 3:
-                    System.out.println("Você escolheu a opção 3");
+                    gerenciador.listar();
                     break;
                 case 4:
                     gerenciador.buscar();
                     break;
-                    case 5:
-                    System.out.println("Você escolheu a opção 4");
+                case 5:
+                    gerenciador.remover();
                     break;
+                case 6:
+                    // PEDIR O USUARIO O TIPO EM INT
+                    int tipo = 0;
+                    System.out.println("Escolha o tipo de animal que deseja listar: ");
+                    System.out.println("1 - Cachorro");
+                    System.out.println("2 - Gato");
+                    System.out.println("3 - Peixe");
+                    System.out.println("4 - Pássaro");
+                    System.out.println("5 - Coelho");
+                    tipo = sc.nextInt();
+                    sc.nextLine();
+
+                    gerenciador.listar(tipo);
+                break;
+
                 case 0:
                     System.out.println("Obrigado por usar o sistema! Até a proxima!");
                     break;

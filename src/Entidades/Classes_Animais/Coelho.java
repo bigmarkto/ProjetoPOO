@@ -1,6 +1,8 @@
 package Entidades.Classes_Animais;
+import Entidades.Dono;
+import Entidades.Animal;
 
-public class Coelho {
+public class Coelho extends Animal{
     
     private String nome;
     private int idade;
