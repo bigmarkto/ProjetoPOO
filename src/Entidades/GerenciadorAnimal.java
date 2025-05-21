@@ -6,20 +6,20 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
-
 public class GerenciadorAnimal implements AnimalInterface {
-    
+
     // Atributos
     private static List<Animal> listaAnimais = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
-    /** Funções para o auxilio da alteração de dados dos animais
-    *
-    * Procura um animal pela sua ID e retorna ele.
-    * 
-    * @param id A ID do animal a ser procurado.
-    * @return O animal encontrado ou null caso n o encontre.
-    */
+    /**
+     * Funções para o auxilio da alteração de dados dos animais
+     *
+     * Procura um animal pela sua ID e retorna ele.
+     * 
+     * @param id A ID do animal a ser procurado.
+     * @return O animal encontrado ou null caso n o encontre.
+     */
     private static Animal getById(Integer id) {
         for (Animal animal : listaAnimais) {
             if (animal.getId() == id) {
@@ -30,7 +30,7 @@ public class GerenciadorAnimal implements AnimalInterface {
     }
 
     /**
-     * Procura um animal pelo seu nome e exibe suas informações 
+     * Procura um animal pelo seu nome e exibe suas informações
      * em formato tabular se encontrado.
      *
      * @param nome O nome do animal a ser procurado.
@@ -53,7 +53,7 @@ public class GerenciadorAnimal implements AnimalInterface {
     }
 
     /**
-     * Procura um animal pelo seu dono e exibe suas informações 
+     * Procura um animal pelo seu dono e exibe suas informações
      * em formato tabular se encontrado.
      *
      * @param dono O nome do dono do animal a ser procurado.
@@ -155,8 +155,9 @@ public class GerenciadorAnimal implements AnimalInterface {
     /**
      * Altera as informações de um animal existente.
      *
-     * Exibe um menu para selecionar o ID do animal e o aspecto que se deseja alterar 
-     * (nome, idade ou dono). Após a alteração, o usuário é perguntado se deseja 
+     * Exibe um menu para selecionar o ID do animal e o aspecto que se deseja
+     * alterar
+     * (nome, idade ou dono). Após a alteração, o usuário é perguntado se deseja
      * alterar outro animal.
      */
     @Override
@@ -208,25 +209,24 @@ public class GerenciadorAnimal implements AnimalInterface {
     /**
      * Remove um animal existente.
      *
-     * Exibe um menu para selecionar o ID do animal a ser removido. 
-     * Após a remoção, mostra a mensagem de sucesso e após, o usuario é perguntado se deseja
+     * Exibe um menu para selecionar o ID do animal a ser removido.
+     * Após a remoção, mostra a mensagem de sucesso e após, o usuario é perguntado
+     * se deseja
      * remover outro animal.
      */
     @Override
     public void remover() {
 
         // Pegar qual animal deseja remover
-            int op = 1;
-            do {
-                System.out.println("---== MENU DE REMOÇÃO ==---");
-                System.out.println("Qual o ID do animal que deseja remover? ");
-                    int id = sc.nextInt();
+        int op = 1;
+        do {
+            System.out.println("---== MENU DE REMOÇÃO ==---");
+            System.out.println("Qual o ID do animal que deseja remover? ");
+            int id = sc.nextInt();
 
-            
-
-        // Verificar se o animal existe
-        // Verificar se ele estar na lista, pegar ele da lista e remover
-        Animal animal = getById(id);
+            // Verificar se o animal existe
+            // Verificar se ele estar na lista, pegar ele da lista e remover
+            Animal animal = getById(id);
             if (animal == null) {
                 System.out.println("Animal não encontrado!");
             } else {
@@ -241,7 +241,8 @@ public class GerenciadorAnimal implements AnimalInterface {
     /**
      * Exibe todos os animais cadastrados em formato tabular.
      * 
-     * Se a lista de animais estiver vazia, exibe a mensagem "Nenhum animal cadastrado."
+     * Se a lista de animais estiver vazia, exibe a mensagem "Nenhum animal
+     * cadastrado."
      * Caso contrário, exibe a tabela com as colunas ID, Nome, Idade, Dono e Tipo.
      */
     @Override
@@ -255,12 +256,13 @@ public class GerenciadorAnimal implements AnimalInterface {
         System.out.println("---== LISTA DE ANIMAIS ==---");
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
         System.out.println("|-----|------------|-------|------------|------------|");
-            for (Animal animal : listaAnimais) {
-                System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(), animal.getIdade(), animal.getDono().getNome(), animal.getTipo());
+        for (Animal animal : listaAnimais) {
+            System.out.printf("| %-3d | %-10s | %-5d | %-10s | %-10s |\n", animal.getId(), animal.getNome(),
+                    animal.getIdade(), animal.getDono().getNome(), animal.getTipo());
         }
 
-    } 
-    
+    }
+
     /**
      * Listar por tipo
      * 
@@ -268,25 +270,35 @@ public class GerenciadorAnimal implements AnimalInterface {
      * 
      * O tipo do animal é determinado pelo parâmetro `tipo`, que deve
      * corresponder a um dos seguintes valores: 1 (Cachorro), 2 (Gato),
-     * 3 (Peixe), 4 (Pássaro), ou 5 (Coelho). Se um tipo inválido for 
+     * 3 (Peixe), 4 (Pássaro), ou 5 (Coelho). Se um tipo inválido for
      * fornecido, uma mensagem de erro será exibida.
      * 
-     * Se não houver animais do tipo especificado, uma mensagem 
+     * Se não houver animais do tipo especificado, uma mensagem
      * indicando que nenhum animal foi encontrado será exibida.
      * 
      * @param tipo O código numérico representando o tipo de animal a ser listado.
      */
     @Override
     public void listar(int tipo) {
-       
+
         boolean encontrou = false;
         String tipoAnimal = "";
         switch (tipo) {
-            case 1: tipoAnimal = "Cachorro"; break;
-            case 2: tipoAnimal = "Gato"; break;
-            case 3: tipoAnimal = "Peixe"; break;
-            case 4: tipoAnimal = "Pássaro"; break;
-            case 5: tipoAnimal = "Coelho"; break;
+            case 1:
+                tipoAnimal = "Cachorro";
+                break;
+            case 2:
+                tipoAnimal = "Gato";
+                break;
+            case 3:
+                tipoAnimal = "Peixe";
+                break;
+            case 4:
+                tipoAnimal = "Pássaro";
+                break;
+            case 5:
+                tipoAnimal = "Coelho";
+                break;
             default:
                 System.out.println("Tipo inválido!");
                 return;
@@ -312,8 +324,10 @@ public class GerenciadorAnimal implements AnimalInterface {
     /**
      * Realiza a busca de animais com base no critério escolhido pelo usuário.
      *
-     * Exibe um menu para o usuário selecionar o critério de busca: nome, idade ou dono.
-     * Após selecionar o critério, solicita ao usuário o valor correspondente para busca 
+     * Exibe um menu para o usuário selecionar o critério de busca: nome, idade ou
+     * dono.
+     * Após selecionar o critério, solicita ao usuário o valor correspondente para
+     * busca
      * e exibe os animais encontrados utilizando métodos específicos de busca.
      * O usuário é perguntado se deseja realizar outra busca após cada operação.
      */
@@ -356,19 +370,19 @@ public class GerenciadorAnimal implements AnimalInterface {
     }
 
     /**
-     * Inicializa o sistema com 7 animais de cada tipo (7 peixes, 7 gatos, 7 cachorros, 7 pássaros e 7 coelhos).
+     * Inicializa o sistema com 7 animais de cada tipo (7 peixes, 7 gatos, 7
+     * cachorros, 7 pássaros e 7 coelhos).
      * 
      * Os animais são cadastrados com nome, idade e dono aleatórios.
      */
     public void iniciarSistema() {
-       
-            String[] nomesCachorro = {"Rex", "Luna", "Max", "Bella", "Toby", "Nina", "Rocky"};
-            String[] nomesGato = {"Miau", "Simba", "Lola", "Tigrinha", "Ginger", "Salem", "Felix"};
-            String[] nomesPeixe = {"Nemo", "Bubbles", "Goldie", "Finny", "Splash", "Coral", "Dory"};
-            String[] nomesPassaro = {"Piu", "Tweety", "Sky", "Sunny", "Blue", "Kiwi", "Rio"};
-            String[] nomesCoelho = {"Floquinho", "Cenoura", "Snowball", "Bunny", "Puffy", "Hopper", "Marshmallow"};
-            String[] nomesDonos = {"João", "Maria", "Ana", "Pedro", "Lucas", "Sofia", "Clara"};
-                Random random = new Random();
+        String[] nomesCachorro = { "Rex", "Luna", "Max", "Bella", "Toby", "Nina", "Rocky" };
+        String[] nomesGato = { "Miau", "Simba", "Lola", "Tigrinha", "Ginger", "Salem", "Felix" };
+        String[] nomesPeixe = { "Nemo", "Bubbles", "Goldie", "Finny", "Splash", "Coral", "Dory" };
+        String[] nomesPassaro = { "Piu", "Tweety", "Sky", "Sunny", "Blue", "Kiwi", "Rio" };
+        String[] nomesCoelho = { "Floquinho", "Cenoura", "Snowball", "Bunny", "Puffy", "Hopper", "Marshmallow" };
+        String[] nomesDonos = { "João", "Maria", "Ana", "Pedro", "Lucas", "Sofia", "Clara" };
+        Random random = new Random();
 
         // Adiciona 7 animais de cada tipo
         for (int i = 0; i < 7; i++) {
@@ -376,35 +390,77 @@ public class GerenciadorAnimal implements AnimalInterface {
             listaAnimais.add(new Cachorro(
                     nomesCachorro[i],
                     random.nextInt(10) + 1,
-                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
-            ));
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])));
             // Gatos
             listaAnimais.add(new Gato(
                     nomesGato[i],
                     random.nextInt(10) + 1,
-                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
-            ));
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])));
             // Peixes
             listaAnimais.add(new Peixe(
                     nomesPeixe[i],
                     random.nextInt(5) + 1,
-                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
-            ));
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])));
             // Pássaros
             listaAnimais.add(new Passaro(
                     nomesPassaro[i],
                     random.nextInt(8) + 1,
-                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
-            ));
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])));
             // Coelhos
             listaAnimais.add(new Coelho(
                     nomesCoelho[i],
                     random.nextInt(6) + 1,
-                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])
-            ));
+                    new Dono(nomesDonos[random.nextInt(nomesDonos.length)])));
         }
-        
-    }
-    
 
+    }
+
+    public void menuInicializar() {
+        int op;
+        iniciarSistema();
+
+        do {
+            System.out.println("---=== MENU DE GERENCIAMENTO CLIENTE ===---");
+            System.out.println("1 - Cadastrar um cliente");
+            System.out.println("2 - Alterar um cliente");
+            System.out.println("3 - Listar todos os clientes");
+            System.out.println("4 - Listar clientes por tipo");
+            System.out.println("5 - Buscar um cliente");
+            System.out.println("6 - Remover um cliente");
+            System.out.println("0 - Voltar");
+            System.out.println("Escolha uma opção: ");
+            op = sc.nextInt();
+            sc.nextLine();
+
+            switch (op) {
+                case 1:
+                    cadastrar();
+                    break;
+                case 2:
+                    alterar();
+                    break;
+                case 3:
+                    listar();
+                    break;
+                case 4:
+                    System.out.println("Qual o tipo de animal? ");
+                    System.out.printf("1 - Cachorro \n2 - Gato \n3 - Peixe \n4 - Pássaro\n5 - Coelho\n");
+                    int tipo = sc.nextInt();
+                    listar(tipo);
+                    break;
+                case 5:
+                    buscar();
+                    break;
+                case 6:
+                    remover();
+                    break;
+                case 0:
+                    System.out.println("Voltando....");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+
+        } while (op != 0);
+    }
 }

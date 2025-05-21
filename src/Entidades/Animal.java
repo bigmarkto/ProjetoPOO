@@ -14,7 +14,6 @@ public abstract class Animal {
           this.idade = idade;
           this.dono = dono;
           this.id = idStatico++;
-          System.out.println("Animal criado com sucesso com ID: " + this.id);
      }
 
      /**

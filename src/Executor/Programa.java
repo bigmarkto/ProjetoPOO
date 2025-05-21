@@ -6,71 +6,46 @@ import Entidades.GerenciadorAnimal;
 
 public class Programa {
     public static void main(String[] args) {
-        // Váriaveis iniciais
         int op;
-
-        // Menu de opções
         Scanner sc = new Scanner(System.in);
 
-        // Instancia o gerenciador de animais
-        GerenciadorAnimal gerenciador = new GerenciadorAnimal();
-        gerenciador.iniciarSistema();
+        GerenciadorAnimal gerenciadorAnimal = new GerenciadorAnimal();
 
         do {
-
-            System.out.println("---== MENU DE OPÇÕES ==---");
-            System.out.println("1 - Cadastrar animal no sistema");
-            System.out.println("2 - Alterar informações do animal");
-            System.out.println("3 - Listar animais do sistema");
-            System.out.println("4 - Buscar animais no sistema");
-            System.out.println("5 - Remover animal do sistema");
-            System.out.println("6 - Listar animais por tipo");
+            System.out.println("---=== SISTEMA DE PETSHOP ===---");
+            System.out.println("1 - Agendar um atendimento"); // TODO: NEEMIAS
+            System.out.println("2 - Comprar um produto"); // TODO: MARCO e EMANUEL
+            System.out.println("3 - Gerenciamento de registros de clientes");
+            System.out.println("4 - Gerenciamento de registros de produtos"); // TODO: MARCO E EMANUEL
+            System.out.println("5 - Gerenciamento de registros de atendimentos"); // TODO: NEEMIAS
             System.out.println("0 - Sair");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
             sc.nextLine();
 
-            System.out.printf("\n\n\n\n");
             switch (op) {
                 case 1:
-                    gerenciador.cadastrar();
+                    System.out.println("Agendar um atendimento");
                     break;
                 case 2:
-                    gerenciador.alterar();
+                    System.out.println("Comprar um produto");
                     break;
                 case 3:
-                    gerenciador.listar();
+                    gerenciadorAnimal.menuInicializar();
                     break;
                 case 4:
-                    gerenciador.buscar();
+                    System.out.println("Gerenciamento de registros de produtos");
                     break;
                 case 5:
-                    gerenciador.remover();
+                    System.out.println("Gerenciamento de registros de atendimentos");
                     break;
-                case 6:
-                    // PEDIR O USUARIO O TIPO EM INT
-                    int tipo = 0;
-                    System.out.println("Escolha o tipo de animal que deseja listar: ");
-                    System.out.println("1 - Cachorro");
-                    System.out.println("2 - Gato");
-                    System.out.println("3 - Peixe");
-                    System.out.println("4 - Pássaro");
-                    System.out.println("5 - Coelho");
-                    tipo = sc.nextInt();
-                    sc.nextLine();
-
-                    gerenciador.listar(tipo);
-                break;
-
                 case 0:
-                    System.out.println("Obrigado por usar o sistema! Até a proxima!");
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
-                    System.out.printf("Opção inválida! Tente novamente.");
-                    break;
+                    System.out.println("Opção inválida. Tente novamente.");
             }
 
-            System.out.printf("\n\n\n\n");
         } while (op != 0);
 
         sc.close();
