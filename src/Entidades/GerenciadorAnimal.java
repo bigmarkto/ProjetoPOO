@@ -1,8 +1,6 @@
 package Entidades;
 
 import Entidades.Classes_Animais.*;
-import Entidades.Animal;
-import Entidades.Dono;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
