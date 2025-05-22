@@ -1,4 +1,4 @@
-package Entidades;
+package Entidades.Interfaces;
 
 public interface AnimalInterface  {
     

@@ -1,6 +1,10 @@
-package Entidades;
+package Entidades.Gerenciadores;
 
+import Entidades.Animal;
+import Entidades.Dono;
 import Entidades.Classes_Animais.*;
+import Entidades.Interfaces.AnimalInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,9 +24,18 @@ public class GerenciadorAnimal implements AnimalInterface {
      * @param id A ID do animal a ser procurado.
      * @return O animal encontrado ou null caso n o encontre.
      */
-    private static Animal getById(Integer id) {
+    protected Animal getById(Integer id) {
         for (Animal animal : listaAnimais) {
             if (animal.getId() == id) {
+                return animal;
+            }
+        }
+        return null;
+    }
+
+    protected Animal getAnimalByNameAndDono(String nome, String dono) {
+        for (Animal animal : listaAnimais) {
+            if (animal.getNome().equalsIgnoreCase(nome) && animal.getDono().getNome().equalsIgnoreCase(dono)) {
                 return animal;
             }
         }
@@ -35,7 +48,7 @@ public class GerenciadorAnimal implements AnimalInterface {
      *
      * @param nome O nome do animal a ser procurado.
      */
-    private static void getByNome(String nome) {
+    protected void getByNome(String nome) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
         System.out.println("|-----|------------|-------|------------|------------|");
@@ -58,7 +71,7 @@ public class GerenciadorAnimal implements AnimalInterface {
      *
      * @param dono O nome do dono do animal a ser procurado.
      */
-    private static void getByDono(String dono) {
+    protected void getByDono(String dono) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
         System.out.println("|-----|------------|-------|------------|------------|");
@@ -81,7 +94,7 @@ public class GerenciadorAnimal implements AnimalInterface {
      *
      * @param idade A idade do animal a ser procurado.
      */
-    private static void getByIdade(Integer idade) {
+    protected void getByIdade(Integer idade) {
         boolean encontrou = false;
         System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome", "Idade", "Dono", "Tipo");
         System.out.println("|-----|------------|-------|------------|------------|");
@@ -417,7 +430,6 @@ public class GerenciadorAnimal implements AnimalInterface {
 
     public void menuInicializar() {
         int op;
-        iniciarSistema();
 
         do {
             System.out.println("---=== MENU DE GERENCIAMENTO CLIENTE ===---");

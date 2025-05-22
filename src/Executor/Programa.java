@@ -2,7 +2,8 @@ package Executor;
 
 import java.util.Scanner;
 
-import Entidades.GerenciadorAnimal;
+import Entidades.Gerenciadores.GerenciadorAnimal;
+import Entidades.Gerenciadores.GerenciadorAtendimento;
 
 public class Programa {
     public static void main(String[] args) {
@@ -10,14 +11,17 @@ public class Programa {
         Scanner sc = new Scanner(System.in);
 
         GerenciadorAnimal gerenciadorAnimal = new GerenciadorAnimal();
+        gerenciadorAnimal.iniciarSistema();
+        GerenciadorAtendimento gerenciadorAtendimento = new GerenciadorAtendimento();
 
         do {
             System.out.println("---=== SISTEMA DE PETSHOP ===---");
-            System.out.println("1 - Agendar um atendimento"); // TODO: NEEMIAS
-            System.out.println("2 - Comprar um produto"); // TODO: MARCO e EMANUEL
-            System.out.println("3 - Gerenciamento de registros de clientes");
-            System.out.println("4 - Gerenciamento de registros de produtos"); // TODO: MARCO E EMANUEL
-            System.out.println("5 - Gerenciamento de registros de atendimentos"); // TODO: NEEMIAS
+            System.out.println("1 - Agendar um atendimento");
+            System.out.println("2 - Cancelar um atendimento");
+            System.out.println("3 - Comprar um produto"); // TODO: MARCO e EMANUEL
+            System.out.println("4 - Gerenciamento de registros de clientes");
+            System.out.println("5 - Gerenciamento de registros de produtos"); // TODO: MARCO E EMANUEL
+            System.out.println("6 - Gerenciamento de registros de atendimentos"); 
             System.out.println("0 - Sair");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
@@ -25,21 +29,24 @@ public class Programa {
 
             switch (op) {
                 case 1:
-                    System.out.println("Agendar um atendimento");
+                    gerenciadorAtendimento.agendarAtendimento();
                     break;
                 case 2:
-                    System.out.println("Comprar um produto");
+                    gerenciadorAtendimento.cancelarAtendimento();
                     break;
                 case 3:
-                    gerenciadorAnimal.menuInicializar();
+                    // TODO: MARCO e EMANUEL
                     break;
                 case 4:
-                    System.out.println("Gerenciamento de registros de produtos");
+                    gerenciadorAnimal.menuInicializar();
                     break;
                 case 5:
-                    System.out.println("Gerenciamento de registros de atendimentos");
+                    // TODO: MARCO E EMANUEL
                     break;
-                case 0:
+                case 6:
+                     gerenciadorAtendimento.menuInicializar();
+                     break;
+            case 0:
                     System.out.println("Saindo do sistema...");
                     break;
                 default:
