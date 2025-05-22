@@ -21,9 +21,7 @@ public abstract class Animal {
       * 
       * @return A string simples do nome da classe do animal.
       */
-     public String getTipo() {
-          return this.getClass().getSimpleName();
-     };
+     public abstract String getTipo();
     
 
      // Getters e Setters
