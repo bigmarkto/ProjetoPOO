@@ -2,6 +2,7 @@ package Executor;
 
 import Entidades.Gerenciadores.GerenciadorAnimal;
 import Entidades.Gerenciadores.GerenciadorAtendimento;
+import Entidades.Gerenciadores.GerenciadorCompra;
 import Entidades.Gerenciadores.GerenciadorProdutos;
 import java.util.Scanner;
 
@@ -12,15 +13,16 @@ public class Programa {
 
         GerenciadorAnimal gerenciadorAnimal = new GerenciadorAnimal();
         gerenciadorAnimal.iniciarSistema();
-        GerenciadorAtendimento gerenciadorAtendimento = new GerenciadorAtendimento();
         GerenciadorProdutos gerenciadorProdutos = new GerenciadorProdutos();
-        
+        gerenciadorProdutos.iniciarProdutos();
+        GerenciadorAtendimento gerenciadorAtendimento = new GerenciadorAtendimento();
+        GerenciadorCompra gerenciadorCompra = new GerenciadorCompra();        
 
         do {
             System.out.println("---=== SISTEMA DE PETSHOP ===---");
             System.out.println("1 - Agendar um atendimento");
             System.out.println("2 - Cancelar um atendimento");
-            System.out.println("3 - Comprar um produto"); // TODO: MARCO e EMANUEL
+            System.out.println("3 - Comprar um produto");
             System.out.println("4 - Gerenciamento de registros de clientes");
             System.out.println("5 - Gerenciamento de registros de produtos");
             System.out.println("6 - Gerenciamento de registros de atendimentos"); 
@@ -37,7 +39,7 @@ public class Programa {
                     gerenciadorAtendimento.cancelarAtendimento();
                     break;
                 case 3:
-                    
+                    gerenciadorCompra.menuCompras();
                     break;
                 case 4:
                     gerenciadorAnimal.menuInicializar();

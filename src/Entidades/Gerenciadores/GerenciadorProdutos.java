@@ -34,8 +34,7 @@ public class GerenciadorProdutos implements ProdutosInterface
                 removerProduto();
                 break;
             case 3:
-                iniciarProdutos();
-                listarProdutos();
+                menuListagem();        
                 break;
             case 0:
                 System.out.println("Saindo do gerenciador de produtos...");
@@ -57,7 +56,11 @@ public class GerenciadorProdutos implements ProdutosInterface
 
         System.out.println("Digite a categoria do produto: ");
         categoria = sc.nextLine();
-
+        while (!categoria.equalsIgnoreCase("Alimento") && !categoria.equalsIgnoreCase("Brinquedo") &&
+               !categoria.equalsIgnoreCase("Higiene") && !categoria.equalsIgnoreCase("Acessório")) {
+            System.out.println("Categoria inválida. Digite novamente (Alimento, Brinquedo, Higiene, Acessório): ");
+            categoria = sc.nextLine();
+        }
         System.out.println("Digite o preco do produto: ");
         preco = sc.nextDouble();
         sc.nextLine();
@@ -72,6 +75,15 @@ public class GerenciadorProdutos implements ProdutosInterface
         produtos.add(produto);
 
         System.out.println("Produto cadastrado com sucesso!");
+    }
+
+    protected Produto getProdutoById(int id) {
+        for (Produto idProduto : produtos) {
+            if (idProduto.getIdProd() == id) {
+                return idProduto;
+            }
+        }
+        return null;
     }
 
     public void removerProduto()
@@ -91,13 +103,13 @@ public class GerenciadorProdutos implements ProdutosInterface
         
         
         // Busca o produto pelo ID
-    Produto produtoParaCancelar = null;
-        for ( Produto produto : produtos) {
-            if (produto.getIdProd() == id) {
-            produtoParaCancelar =produto;
-                break;
+        Produto produtoParaCancelar = null;
+            for ( Produto produto : produtos) {
+                if (produto.getIdProd() == id) {
+                produtoParaCancelar =produto;
+                    break;
+                }
             }
-        }
 
         // Cancela oproduto se encontrado
         if (produtoParaCancelar != null) {
@@ -108,14 +120,48 @@ public class GerenciadorProdutos implements ProdutosInterface
         }
     }
 
+    public void menuListagem(){
+        int op;
+        do{
+        System.out.println("Escolha uma opção de listagem:");
+        System.out.println("1 - Listar todos os produtos");
+        System.out.println("2 - Listar produtos por categoria");
+        System.out.println("0 - Voltar");
+        op = sc.nextInt();
+        sc.nextLine();
+        switch (op) {
+            case 1:
+                listarProdutos();
+                break;
+            case 2:
+                System.out.println("Escolha uma categoria:");
+                System.out.println("1 - Alimento");
+                System.out.println("2 - Brinquedo");
+                System.out.println("3 - Higiene");
+                System.out.println("4 - Acessório");
+                int opCategoria = sc.nextInt();
+                sc.nextLine();
+                listarPorCategoria(opCategoria);
+                break;
+            case 0:
+                System.out.println("Voltando...");
+                break;
+            default:
+                System.out.println("Opção inválida. Tente novamente.");
+        }
+        } while (op != 0);
+    }
+
     public void listarProdutos()
     {
-        
-        if (produtos.size() == 0)
-        {
+        //Verifica se a lista de produtos está vazia
+        if (produtos.isEmpty()){
             System.out.println("Nenhum produto cadastrado.");
             return;
         }
+
+
+
         //Exibe os produtos cadastrados ao usuário
         System.out.println("---=== LISTA DE PRODUTOS ===---");
         for (Produto produto : produtos)
@@ -129,8 +175,46 @@ public class GerenciadorProdutos implements ProdutosInterface
         }
         System.out.println("\n---=== FIM DA LISTA ===---");
         
-        
-        
+    }
+
+    public void listarPorCategoria(int opCategoria){
+        //Verifica se a lista de produtos está vazia
+        boolean categoriaEncontrada = false;
+
+        String categoria ="";
+
+        switch (opCategoria) {
+            case 1:
+                categoria = "Alimento";
+                break;
+            case 2:
+                categoria = "Brinquedo";
+                break;
+            case 3:
+                categoria = "Higiene";
+                break;
+            case 4:
+                categoria = "Acessório";
+                break;
+            default:
+                System.out.println("Opção inválida.");
+        }
+
+        System.out.println("---== LISTA DE " + categoria.toUpperCase() + "S ==---");
+        System.out.printf("| %-3s | %-10s | %-5s | %-10s | %-10s |\n", "ID", "Nome do Produto", "Preço", "Categoria", "Quantidade");
+        System.out.println("|-----|------------|-------|------------|------------|");
+        for (Produto produto : produtos) {
+            if (produto.getCategoria().equalsIgnoreCase(categoria)) {
+                System.out.printf("| %-3d | %s | %.2f | %-10s | %d |\n",
+                        produto.getIdProd(), produto.getNomeProd(), produto.getPreco(), produto.getCategoria(), produto.getQuantidade());
+                categoriaEncontrada = true;
+            }
+        }
+
+        if(!categoriaEncontrada) {
+            System.out.println("Categoria não encontrada.");
+        }
+
     }
 
     public void iniciarProdutos()
@@ -139,12 +223,12 @@ public class GerenciadorProdutos implements ProdutosInterface
         String[] categoriasProdutos = { "Alimento", "Brinquedo", "Higiene", "Acessório", "Alimento", "Alimento", "Acessório" };
         double[] precosProdutos = { 20.99, 15.99, 12.99, 9.99, 18.99, 10.99, 25.99 };
         int[] quantidadesProdutos = { 10, 5, 8, 12, 15, 8, 5 };
-        
-// Adiciona 7 produtos prontos
-    for (int i = 0; i < 7; i++) {
-        Produto produto = new Produto(i + 1, nomesProdutos[i], categoriasProdutos[i], precosProdutos[i], quantidadesProdutos[i]);
-        produtos.add(produto);
-}
+                
+        // Adiciona 7 produtos prontos
+        for (int i = 0; i < 7; i++) {
+           Produto produto = new Produto(i + 1, nomesProdutos[i], categoriasProdutos[i], precosProdutos[i], quantidadesProdutos[i]);
+           produtos.add(produto);
+        }
     }
 
 
