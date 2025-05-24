@@ -1,11 +1,10 @@
 package Entidades.Gerenciadores;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.List;
-
-import Entidades.Produto;
 import Entidades.Interfaces.ProdutosInterface;
+import Entidades.Produto;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 //Classes
 public class GerenciadorProdutos implements ProdutosInterface
@@ -47,12 +46,32 @@ public class GerenciadorProdutos implements ProdutosInterface
     }
     public void adicionarProduto()
     {
-        
+        String nome;
+        Double preco;
+        Integer quantidade;
+
+        System.out.println("Digite o nome do produto: ");
+        nome = sc.nextLine();
+
+        System.out.println("Digite o preco do produto: ");
+        preco = sc.nextDouble();
+        sc.nextLine();
+
+        System.out.println("Digite a quantidade do produto: ");
+        quantidade = sc.nextInt();
+        sc.nextLine();
+
+        int id = produtos.size() + 1;
+
+        Produto produto = new Produto(id,nome,preco,quantidade);
+        produtos.add(produto);
+
+        System.out.println("Produto cadastrado com sucesso!");
     }
 
     public void removerProduto()
     {
-        
+        listarProdutos();
         //Verifica se a lista de produtos está vazia
         if (produtos.isEmpty()) {
             //Se estiver vazia, exibe uma mensagem e retorna
@@ -64,7 +83,7 @@ public class GerenciadorProdutos implements ProdutosInterface
         int id = sc.nextInt();
         sc.nextLine();
 
-        listarProdutos();
+        
         
         // Busca o produto pelo ID
     Produto produtoParaCancelar = null;
@@ -96,13 +115,13 @@ public class GerenciadorProdutos implements ProdutosInterface
         System.out.println("---=== LISTA DE PRODUTOS ===---");
         for (Produto produto : produtos)
         {
-           System.out.printf("ID: %d | Nome: %s | Preço: %d | Quantidade: %s ",
+           System.out.printf("ID: %d | Nome: %s | Preço: %.2f | Quantidade: %s ",
                 produto.getIdProd(),
                 produto.getNomeProd(),
                 produto.getPreco(),
                 produto.getQuantidade());
         }
-        System.out.println("---=== FIM DA LISTA ===---");
+        System.out.println("\n---=== FIM DA LISTA ===---");
         
         
         
