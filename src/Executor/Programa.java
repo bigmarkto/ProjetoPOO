@@ -1,10 +1,8 @@
 package Executor;
 
-import Entidades.Gerenciadores.GerenciadorProdutos;
 import Entidades.Gerenciadores.GerenciadorAnimal;
 import Entidades.Gerenciadores.GerenciadorAtendimento;
-import Entidades.Gerenciadores.GerenciadorCompra;
-
+import Entidades.Gerenciadores.GerenciadorProdutos;
 import java.util.Scanner;
 
 public class Programa {
@@ -16,7 +14,7 @@ public class Programa {
         gerenciadorAnimal.iniciarSistema();
         GerenciadorAtendimento gerenciadorAtendimento = new GerenciadorAtendimento();
         GerenciadorProdutos gerenciadorProdutos = new GerenciadorProdutos();
-        GerenciadorCompra gerenciadorCompra = new GerenciadorCompra();
+        
 
         do {
             System.out.println("---=== SISTEMA DE PETSHOP ===---");
@@ -39,7 +37,7 @@ public class Programa {
                     gerenciadorAtendimento.cancelarAtendimento();
                     break;
                 case 3:
-                    gerenciadorProdutos.menuCompras();
+                    
                     break;
                 case 4:
                     gerenciadorAnimal.menuInicializar();

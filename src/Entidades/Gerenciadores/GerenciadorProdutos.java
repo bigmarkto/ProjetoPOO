@@ -34,6 +34,7 @@ public class GerenciadorProdutos implements ProdutosInterface
                 removerProduto();
                 break;
             case 3:
+                iniciarProdutos();
                 listarProdutos();
                 break;
             case 0:
@@ -131,4 +132,21 @@ public class GerenciadorProdutos implements ProdutosInterface
         
         
     }
+
+    public void iniciarProdutos()
+    {
+        String[] nomesProdutos = { "Ração para cães", "Brinquedo para gatos", "Shampoo para cães", "Coleira para cães", "Comida para gatos", "Ração para peixes", "Casa para coelhos" };
+        String[] categoriasProdutos = { "Alimento", "Brinquedo", "Higiene", "Acessório", "Alimento", "Alimento", "Acessório" };
+        double[] precosProdutos = { 20.99, 15.99, 12.99, 9.99, 18.99, 10.99, 25.99 };
+        int[] quantidadesProdutos = { 10, 5, 8, 12, 15, 8, 5 };
+        
+// Adiciona 7 produtos prontos
+    for (int i = 0; i < 7; i++) {
+        Produto produto = new Produto(i + 1, nomesProdutos[i], categoriasProdutos[i], precosProdutos[i], quantidadesProdutos[i]);
+        produtos.add(produto);
+}
+    }
+
+
+
 }

@@ -4,5 +4,6 @@ public interface ProdutosInterface {
    public void adicionarProduto();
    public void removerProduto();
    public void listarProdutos();
+   public void iniciarProdutos();
 
 }
