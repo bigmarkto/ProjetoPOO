@@ -1,9 +1,8 @@
 package Executor;
 
-import java.util.Scanner;
-
 import Entidades.Gerenciadores.GerenciadorAnimal;
 import Entidades.Gerenciadores.GerenciadorAtendimento;
+import java.util.Scanner;
 
 public class Programa {
     public static void main(String[] args) {

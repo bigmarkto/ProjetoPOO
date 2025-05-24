@@ -1,19 +1,19 @@
 package Entidades.Gerenciadores;
 
+import Entidades.Animal;
+import Entidades.Atendimento;
+import Entidades.Dono;
+import Entidades.Interfaces.AtendimentoInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import Entidades.Animal;
-import Entidades.Interfaces.AtendimentoInterface;
-import Entidades.Atendimento;
-import Entidades.Dono;
 
 public class GerenciadorAtendimento implements AtendimentoInterface { 
 
       GerenciadorAnimal gerenciadorAnimal = new GerenciadorAnimal();
       private static List<Atendimento> listaAtendimentos = new ArrayList<>();
       Scanner sc = new Scanner(System.in);
+
 
     public void agendarAtendimento() {
         System.out.println("Digite o ID do atendimento: ");
