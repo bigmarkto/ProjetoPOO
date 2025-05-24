@@ -21,7 +21,7 @@ public class Programa {
             System.out.println("2 - Cancelar um atendimento");
             System.out.println("3 - Comprar um produto"); // TODO: MARCO e EMANUEL
             System.out.println("4 - Gerenciamento de registros de clientes");
-            System.out.println("5 - Gerenciamento de registros de produtos"); // TODO: MARCO E EMANUEL
+            System.out.println("5 - Gerenciamento de registros de produtos");
             System.out.println("6 - Gerenciamento de registros de atendimentos"); 
             System.out.println("0 - Sair");
             System.out.println("Escolha uma opção: ");

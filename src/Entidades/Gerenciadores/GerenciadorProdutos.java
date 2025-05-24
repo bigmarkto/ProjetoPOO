@@ -115,7 +115,7 @@ public class GerenciadorProdutos implements ProdutosInterface
         System.out.println("---=== LISTA DE PRODUTOS ===---");
         for (Produto produto : produtos)
         {
-           System.out.printf("ID: %d | Nome: %s | Preço: %.2f | Quantidade: %s ",
+           System.out.printf("ID: %d | Nome: %s | Preço: %.2f | Quantidade: %s \n",
                 produto.getIdProd(),
                 produto.getNomeProd(),
                 produto.getPreco(),
