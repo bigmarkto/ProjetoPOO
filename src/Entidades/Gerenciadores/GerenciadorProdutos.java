@@ -47,11 +47,15 @@ public class GerenciadorProdutos implements ProdutosInterface
     public void adicionarProduto()
     {
         String nome;
+        String categoria;
         Double preco;
         Integer quantidade;
 
         System.out.println("Digite o nome do produto: ");
         nome = sc.nextLine();
+
+        System.out.println("Digite a categoria do produto: ");
+        categoria = sc.nextLine();
 
         System.out.println("Digite o preco do produto: ");
         preco = sc.nextDouble();
@@ -63,7 +67,7 @@ public class GerenciadorProdutos implements ProdutosInterface
 
         int id = produtos.size() + 1;
 
-        Produto produto = new Produto(id,nome,preco,quantidade);
+        Produto produto = new Produto(id,nome,categoria,preco,quantidade);
         produtos.add(produto);
 
         System.out.println("Produto cadastrado com sucesso!");
@@ -115,9 +119,10 @@ public class GerenciadorProdutos implements ProdutosInterface
         System.out.println("---=== LISTA DE PRODUTOS ===---");
         for (Produto produto : produtos)
         {
-           System.out.printf("ID: %d | Nome: %s | Preço: %.2f | Quantidade: %s \n",
+           System.out.printf("ID: %d | Nome: %s | Categoria: %s | Preço: %.2f | Quantidade: %s \n",
                 produto.getIdProd(),
                 produto.getNomeProd(),
+                produto.getCategoria(),
                 produto.getPreco(),
                 produto.getQuantidade());
         }

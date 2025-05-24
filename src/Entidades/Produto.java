@@ -3,12 +3,14 @@ package Entidades;
 public class Produto {
     private int idProd;
     private String nomeProd;
+    private String categoria;
     private double preco;
     private int quantidade;
 
-    public Produto(int idProd, String nomeProd, double preco, int quantidade) {
+    public Produto(int idProd, String nomeProd, String categoria, double preco, int quantidade) {
         this.idProd = idProd;
         this.nomeProd = nomeProd;
+        this.categoria = categoria;
         this.preco = preco;
         this.quantidade = quantidade;
     }
@@ -19,6 +21,10 @@ public class Produto {
 
     public String getNomeProd() {
         return this.nomeProd;
+    }
+
+    public String getCategoria() {
+        return this.categoria;
     }
 
     public double getPreco() {
