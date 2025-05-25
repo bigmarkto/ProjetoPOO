@@ -17,7 +17,6 @@ public class GerenciadorCompra implements CompraInterface
     //Metodos
     
     public void menuCompras() {
-        gerenciadorProdutos.iniciarProdutos();
         int op;
         do {
         System.out.println("---=== MENU DE COMPRAS DE PRODUTOS ===---");
