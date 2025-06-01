@@ -38,6 +38,9 @@ public class GerenciadorCompra implements CompraInterface
     }
     
     public void comprarProduto() {
+
+        int op = 1;
+        do {
         GerenciadorProdutos gerenciadorProdutos = new GerenciadorProdutos();
         gerenciadorProdutos.listarProdutos(); // Lista todos os produtos disponíveis
         System.out.println("Digite o ID do produto que deseja comprar:");
@@ -57,6 +60,11 @@ public class GerenciadorCompra implements CompraInterface
         } else {
             System.out.println("Estoque insuficiente. Quantidade disponível: " + produto.getQuantidade());
         }
+
+            System.out.println("Deseja comprar outro produto? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
+            sc.nextLine();
+        } while (op != 0);
     }
 
 }

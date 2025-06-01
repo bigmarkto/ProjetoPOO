@@ -46,6 +46,9 @@ public class GerenciadorProdutos implements ProdutosInterface
     }
     public void adicionarProduto()
     {
+        int op = 1;
+        do {
+
         String nome;
         String categoria;
         Double preco;
@@ -75,6 +78,11 @@ public class GerenciadorProdutos implements ProdutosInterface
         produtos.add(produto);
 
         System.out.println("Produto cadastrado com sucesso!");
+
+        System.out.println("Deseja cadastrar outro produto? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
+            sc.nextLine();
+        } while (op != 0);
     }
 
     protected Produto getProdutoById(int id) {
@@ -88,6 +96,9 @@ public class GerenciadorProdutos implements ProdutosInterface
 
     public void removerProduto()
     {
+
+        int op = 1;
+        do {
         listarProdutos();
         //Verifica se a lista de produtos está vazia
         if (produtos.isEmpty()) {
@@ -118,6 +129,10 @@ public class GerenciadorProdutos implements ProdutosInterface
         } else {
             System.out.println("produto não encontrado.");
         }
+        System.out.println("Deseja remover outro produto? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
+            sc.nextLine();
+        } while (op != 0);
     }
 
     public void menuListagem(){
