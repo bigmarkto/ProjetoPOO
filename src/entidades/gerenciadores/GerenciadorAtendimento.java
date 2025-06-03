@@ -171,6 +171,7 @@ public class GerenciadorAtendimento implements Interface {
 
     public void alterar() {
         // TODO MARCO
+        
     }
 
     
