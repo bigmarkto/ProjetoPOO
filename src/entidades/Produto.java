@@ -52,12 +52,6 @@ public class Produto {
      * 
      * @return O preço do produto como um valor do tipo double.
      */
-
-    /**
-     * Retorna o preço do produto.
-     * 
-     * @return O preço do produto como um valor do tipo double.
-     */
     public double getPreco() {
         return this.preco;
     }
