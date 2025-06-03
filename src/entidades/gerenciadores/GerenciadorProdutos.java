@@ -1,13 +1,13 @@
 package entidades.gerenciadores;
 
 import entidades.Produto;
-import entidades.interfaces.ProdutosInterface;
+import entidades.interfaces.Interface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 //Classes
-public class GerenciadorProdutos implements ProdutosInterface {
+public class GerenciadorProdutos implements Interface {
 
     // Atributos
     Scanner sc = new Scanner(System.in);
@@ -27,7 +27,8 @@ public class GerenciadorProdutos implements ProdutosInterface {
      *
      * O loop só é interrompido quando o usuário escolhe a opção de sair.
      */
-    public void menuProdutos() {
+    @Override
+    public void menu() {
         int p;
         do {
             System.out.println("Bem-vindo ao gerenciador de produtos! O que deseja fazer?");
@@ -40,10 +41,10 @@ public class GerenciadorProdutos implements ProdutosInterface {
 
             switch (p) {
                 case 1:
-                    adicionarProduto();
+                    cadastrar();
                     break;
                 case 2:
-                    removerProduto();
+                    remover();
                     break;
                 case 3:
                     menuListagem();
@@ -76,7 +77,9 @@ public class GerenciadorProdutos implements ProdutosInterface {
      * produto. Se o usuário responder sim, o método volta a executar. Caso
      * contrário, o método sai do loop e retorna.
      */
-    public void adicionarProduto() {
+
+     @Override
+    public void cadastrar() {
         int op = 1;
         do {
 
@@ -122,6 +125,7 @@ public class GerenciadorProdutos implements ProdutosInterface {
      * @param id O ID do produto a ser buscado.
      * @return O produto encontrado ou null se não encontrado.
      */
+
     protected Produto getProdutoById(int id) {
         for (Produto idProduto : produtos) {
             if (idProduto.getIdProd() == id) {
@@ -138,11 +142,12 @@ public class GerenciadorProdutos implements ProdutosInterface {
      * remoção, mostra a mensagem de sucesso e após, o usuario é perguntado se
      * deseja remover outro produto.
      */
-    public void removerProduto() {
+    @Override
+    public void remover() {
 
         int op = 1;
         do {
-            listarProdutos();
+            listar();
             // Verifica se a lista de produtos está vazia
             if (produtos.isEmpty()) {
                 // Se estiver vazia, exibe uma mensagem e retorna
@@ -200,7 +205,7 @@ public class GerenciadorProdutos implements ProdutosInterface {
             sc.nextLine();
             switch (op) {
                 case 1:
-                    listarProdutos();
+                    listar();
                     break;
                 case 2:
                     System.out.println("Escolha uma categoria:");
@@ -210,7 +215,7 @@ public class GerenciadorProdutos implements ProdutosInterface {
                     System.out.println("4 - Acessório");
                     int opCategoria = sc.nextInt();
                     sc.nextLine();
-                    listarPorCategoria(opCategoria);
+                    listar(opCategoria);
                     break;
                 case 0:
                     System.out.println("Voltando...");
@@ -231,7 +236,8 @@ public class GerenciadorProdutos implements ProdutosInterface {
      * mostrando o ID, o nome, a categoria, o preço e a quantidade de cada
      * produto.
      */
-    public void listarProdutos() {
+    @Override
+    public void listar() {
         // Verifica se a lista de produtos está vazia
         if (produtos.isEmpty()) {
             System.out.println("Nenhum produto cadastrado.");
@@ -264,7 +270,8 @@ public class GerenciadorProdutos implements ProdutosInterface {
      * @param opCategoria O número da categoria escolhida pelo usuário (1 -
      * Alimento, 2 - Brinquedo, 3 - Higiene, 4 - Acessório).
      */
-    public void listarPorCategoria(int opCategoria) {
+    @Override
+    public void listar(int opCategoria) {
         // Verifica se a lista de produtos está vazia
         boolean categoriaEncontrada = false;
 
@@ -306,6 +313,11 @@ public class GerenciadorProdutos implements ProdutosInterface {
 
     }
 
+
+    @Override
+    public void alterar() {};
+    @Override
+    public void buscar() {};
     /**
      * Inicializa o sistema com uma lista de produtos predefinidos.
      *

@@ -3,12 +3,12 @@ package entidades.gerenciadores;
 import entidades.Animal;
 import entidades.Atendimento;
 import entidades.Dono;
-import entidades.interfaces.AtendimentoInterface;
+import entidades.interfaces.Interface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GerenciadorAtendimento implements AtendimentoInterface {
+public class GerenciadorAtendimento implements Interface {
 
     GerenciadorAnimal gerenciadorAnimal = new GerenciadorAnimal();
     private static List<Atendimento> listaAtendimentos = new ArrayList<>();
@@ -28,7 +28,8 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
      *
      * O loop eh interrompido quando o usuario escolhe a opcao de sair.
      */
-    public void agendarAtendimento() {
+    @Override
+    public void cadastrar() {
 
         int op = 1;
         do {
@@ -95,11 +96,12 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
      *
      * O loop eh interrompido quando o usuario escolhe a opcao de sair.
      */
-    public void cancelarAtendimento() {
+    @Override
+    public void remover() {
 
         int op = 1;
         do {
-            listarAtendimentos();
+            listar();
 
             if (listaAtendimentos.isEmpty()) {
                 return;
@@ -142,7 +144,8 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
      * mostrando o ID, o nome do cliente, o nome do animal, a data e hora e o
      * serviço de cada atendimento.
      */
-    public void listarAtendimentos() {
+    @Override
+    public void listar() {
         // Verifica se a lista de atendimentos está vazia
         if (listaAtendimentos.isEmpty()) {
             System.out.println("Nenhum atendimento agendado.");
@@ -162,6 +165,15 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
         }
     }
 
+    public void listar(int tipo) {
+        // TODO MARCO
+    }
+
+    public void alterar() {
+        // TODO MARCO
+    }
+
+    
     /**
      * Busca um atendimento pelo ID.
      *
@@ -173,11 +185,13 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
      *
      * O loop é interrompido quando o usuário escolhe a opção de sair.
      */
-    public void buscarAtendimentoPorId() {
+
+     @Override
+    public void buscar() {
 
         int op;
         do {
-            listarAtendimentos();
+            listar();
             System.out.println("Digite o ID do atendimento que deseja buscar: ");
             int id = sc.nextInt();
             sc.nextLine();
@@ -221,13 +235,15 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
      *
      * O loop só é interrompido quando o usuário escolhe a opção de voltar.
      */
-    public void menuInicializar() {
+    @Override
+    public void menu() {
         int op;
 
         do {
             System.out.println("---=== MENU DE GERENCIAMENTO DE ATENDIMENTOS ===---");
             System.out.println("1 - Listar todos atendimentos");
             System.out.println("2 - Buscar atendimento por ID");
+            System.out.println("3 - Cancelar atendimento");
             System.out.println("0 - Voltar");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
@@ -235,10 +251,13 @@ public class GerenciadorAtendimento implements AtendimentoInterface {
 
             switch (op) {
                 case 1:
-                    listarAtendimentos();
+                    listar();
                     break;
                 case 2:
-                    buscarAtendimentoPorId();
+                    buscar();
+                    break;
+                case 3:
+                    remover();
                     break;
                 case 0:
                     System.out.println("Voltando....");

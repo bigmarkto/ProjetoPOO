@@ -1,6 +1,6 @@
 package entidades.interfaces;
 
-public interface AnimalInterface  {
+public interface Interface  {
     
     /**
     * Métodos a serem implementados pelas classes que implementarem essa interface
@@ -13,5 +13,6 @@ public interface AnimalInterface  {
     public void listar();
     public void listar(int tipo);
     public void buscar();
+    public void menu();
     
 }

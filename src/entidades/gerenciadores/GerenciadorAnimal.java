@@ -3,13 +3,13 @@ package entidades.gerenciadores;
 import entidades.Animal;
 import entidades.Dono;
 import entidades.classes_animais.*;
-import entidades.interfaces.AnimalInterface;
+import entidades.interfaces.Interface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GerenciadorAnimal implements AnimalInterface {
+public class GerenciadorAnimal implements Interface {
 
     // Atributos
     private static List<Animal> listaAnimais = new ArrayList<>();
@@ -347,6 +347,7 @@ public class GerenciadorAnimal implements AnimalInterface {
      * métodos específicos de busca. O usuário é perguntado se deseja realizar
      * outra busca após cada operação.
      */
+    @Override
     public void buscar() {
         int op = 1;
 
@@ -444,7 +445,8 @@ public class GerenciadorAnimal implements AnimalInterface {
      *
      * O loop só é interrompido quando o usuário escolhe a opção de voltar.
      */
-    public void menuInicializar() {
+    @Override
+    public void menu() {
         int op;
 
         do {

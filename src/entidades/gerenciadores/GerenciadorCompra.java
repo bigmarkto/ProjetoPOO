@@ -1,12 +1,12 @@
 package entidades.gerenciadores;
 
 import entidades.Produto;
-import entidades.interfaces.CompraInterface;
+import entidades.interfaces.Interface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GerenciadorCompra implements CompraInterface
+public class GerenciadorCompra implements Interface
 {
 
     //Atributos
@@ -29,7 +29,8 @@ public class GerenciadorCompra implements CompraInterface
      *
      * O loop só é interrompido quando o usuário escolhe a opção de sair.
      */
-    public void menuCompras() {
+    @Override
+    public void menu() {
         int op;
         do {
         System.out.println("---=== MENU DE COMPRAS DE PRODUTOS ===---");
@@ -39,7 +40,7 @@ public class GerenciadorCompra implements CompraInterface
         sc.nextLine();
         switch (op) {
             case 1:
-                comprarProduto();
+                cadastrar();
                 break;
             case 0:
                 System.out.println("Saindo do gerenciador de compras...");
@@ -65,11 +66,12 @@ public class GerenciadorCompra implements CompraInterface
      * Se a resposta for sim, o loop se repete. Caso contrário, o loop é
      * interrompido e o usuario volta ao menu principal.
      */
-    public void comprarProduto() {
+    @Override
+    public void cadastrar() {
         int op = 1;
         do {
         GerenciadorProdutos gerenciadorProdutos = new GerenciadorProdutos();
-        gerenciadorProdutos.listarProdutos(); // Lista todos os produtos disponíveis
+        gerenciadorProdutos.listar(); // Lista todos os produtos disponíveis
         System.out.println("Digite o ID do produto que deseja comprar:");
         int id = sc.nextInt();
         sc.nextLine();
@@ -93,6 +95,11 @@ public class GerenciadorCompra implements CompraInterface
             sc.nextLine();
         } while (op != 0);
     }
-
+    public void alterar() {};
+    public void remover() {};
+    public void listar() {};
+    public void listar(int tipo) {};
+    public void buscar() {};
+    
 }
 

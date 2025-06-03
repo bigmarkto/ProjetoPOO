@@ -42,22 +42,22 @@ public class Programa {
 
             switch (op) {
                 case 1:
-                    gerenciadorAtendimento.agendarAtendimento();
+                    gerenciadorAtendimento.cadastrar();
                     break;
                 case 2:
-                    gerenciadorAtendimento.cancelarAtendimento();
+                    gerenciadorAtendimento.remover();
                     break;
                 case 3:
-                    gerenciadorCompra.menuCompras();
+                    gerenciadorCompra.menu();
                     break;
                 case 4:
-                    gerenciadorAnimal.menuInicializar();
+                    gerenciadorAnimal.menu();
                     break;
                 case 5:
-                    gerenciadorProdutos.menuProdutos();
+                    gerenciadorProdutos.menu();
                     break;
                 case 6:
-                     gerenciadorAtendimento.menuInicializar();
+                     gerenciadorAtendimento.menu();
                      break;
             case 0:
                     System.out.println("Saindo do sistema...");
