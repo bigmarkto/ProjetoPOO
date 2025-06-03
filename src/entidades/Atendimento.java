@@ -55,6 +55,10 @@ public class Atendimento {
         return dataHora;
     }
 
+    public void setDataHora(String dataHora) {
+        this.dataHora = dataHora;
+    }
+
     /**
      * Retorna o serviço que será prestado no atendimento.
      * 
@@ -62,5 +66,9 @@ public class Atendimento {
      */
     public String getServico() {
         return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 }

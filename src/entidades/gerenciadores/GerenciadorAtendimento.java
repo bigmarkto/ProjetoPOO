@@ -167,10 +167,77 @@ public class GerenciadorAtendimento implements Interface {
 
     public void listar(int tipo) {
         // TODO MARCO
+
     }
 
     public void alterar() {
         // TODO MARCO
+        int op = 1;
+        do{
+        System.out.println("---== ALTERAR ATENDIMENTO ===---");
+        System.out.print("Digite o ID do atendimento que deseja alterar: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        
+        Atendimento atendimentoParaAlterar = null;
+        for (Atendimento atendimento : listaAtendimentos) {
+            if (atendimento.getId() == id) {
+                atendimentoParaAlterar = atendimento;
+                break;
+            }
+        }
+
+        if (atendimentoParaAlterar != null) {
+            System.out.println("Atendimento encontrado:");
+            System.out.printf("ID: %d | Cliente: %s | Animal: %s | Data e Hora: %s | Serviço: %s%n",
+                    atendimentoParaAlterar.getId(),
+                    atendimentoParaAlterar.getCliente().getNome(),
+                    atendimentoParaAlterar.getAnimal().getNome(),
+                    atendimentoParaAlterar.getDataHora(),
+                    atendimentoParaAlterar.getServico());
+
+            System.out.println("Escolha o campo que deseja alterar:");
+            System.out.println("1 - Nome do cliente");
+            System.out.println("2 - Nome do animal");
+            System.out.println("3 - Data e hora");
+            System.out.println("4 - Serviço");
+            int escolha = sc.nextInt();
+            sc.nextLine();
+
+            switch (escolha) {
+                case 1:
+                    System.out.print("Digite o novo nome do cliente: ");
+                    String novoNomeCliente = sc.nextLine();
+                    atendimentoParaAlterar.getCliente().setNome(novoNomeCliente);
+                    break;
+                case 2:
+                    System.out.print("Digite o novo nome do animal: ");
+                    String novoNomeAnimal = sc.nextLine();
+                    atendimentoParaAlterar.getAnimal().setNome(novoNomeAnimal);
+                    break;
+                case 3:
+                    System.out.print("Digite a nova data e hora: ");
+                    String novaDataHora = sc.nextLine();
+                    atendimentoParaAlterar.setDataHora(novaDataHora);
+                    break;
+                case 4:
+                    System.out.print("Digite o novo serviço: ");
+                    String novoServico = sc.nextLine();
+                    atendimentoParaAlterar.setServico(novoServico);
+                    break;
+            }
+
+            System.out.println("Alterações salvas com sucesso!");
+        } else {
+            System.out.println("Atendimento não encontrado.");
+        }
+
+        System.out.println("Deseja alterar outro atendimento? \n 1 - Sim \n 0 - Não");
+        op = sc.nextInt();
+        sc.nextLine();
+            
+        }while(op != 0);
         
     }
 
@@ -245,6 +312,7 @@ public class GerenciadorAtendimento implements Interface {
             System.out.println("1 - Listar todos atendimentos");
             System.out.println("2 - Buscar atendimento por ID");
             System.out.println("3 - Cancelar atendimento");
+            System.out.println("4 - Alterar atendimento");
             System.out.println("0 - Voltar");
             System.out.println("Escolha uma opção: ");
             op = sc.nextInt();
@@ -259,6 +327,9 @@ public class GerenciadorAtendimento implements Interface {
                     break;
                 case 3:
                     remover();
+                    break;
+                case 4:
+                    alterar();
                     break;
                 case 0:
                     System.out.println("Voltando....");
