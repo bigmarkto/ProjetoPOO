@@ -36,6 +36,9 @@ public class Produto {
     public String getNomeProd() {
         return this.nomeProd;
     }
+    public void setNomeProd(String nomeProd) {
+        this.nomeProd = nomeProd;
+    }
 
 
     /**
@@ -45,6 +48,9 @@ public class Produto {
      */
     public String getCategoria() {
         return this.categoria;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     /**
@@ -60,6 +66,10 @@ public class Produto {
      */
     public double getPreco() {
         return this.preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     /**

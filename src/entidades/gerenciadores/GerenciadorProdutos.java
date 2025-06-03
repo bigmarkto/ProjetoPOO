@@ -35,6 +35,8 @@ public class GerenciadorProdutos implements Interface {
             System.out.println("1 - Adicionar um produto");
             System.out.println("2 - Remover um produto");
             System.out.println("3 - Listar todos os produtos");
+            System.out.println("4 - Alterar um produto");
+            System.out.println("5 - Buscar um produto");
             System.out.println("0 - Sair");
             p = sc.nextInt();
             sc.nextLine();
@@ -48,6 +50,12 @@ public class GerenciadorProdutos implements Interface {
                     break;
                 case 3:
                     menuListagem();
+                    break;
+                case 4:
+                    alterar();
+                    break;
+                case 5:
+                    buscar();
                     break;
                 case 0:
                     System.out.println("Saindo do gerenciador de produtos...");
@@ -135,6 +143,38 @@ public class GerenciadorProdutos implements Interface {
         return null;
     }
 
+
+    protected void getByNomeProd(String nomeProd) {
+        boolean produtoEncontrado = false;
+        System.out.println("---== PRODUTO ENCONTRADO ==---");
+        System.out.printf("| %-3s | %-10s | %-10s | %-5s | %-8s |\n", "ID", "Nome", "Categoria", "Preço", "Quantidade");
+        System.out.println("|-----|------------|------------|-------|----------|");
+            for (Produto produto : produtos) {
+                if (produto.getNomeProd().equalsIgnoreCase(nomeProd)) {
+                    System.out.printf("| %-3d | %-10s | %-10s | %-5.2f | %-8d |\n", produto.getIdProd(), produto.getNomeProd(), produto.getCategoria(), produto.getPreco(), produto.getQuantidade());
+                    produtoEncontrado = true;
+        }
+    }
+    if (!produtoEncontrado) {
+        System.out.println("Produto não encontrado.");
+    }
+    }
+
+    protected void getByPreco(Double preco) {
+        boolean produtoEncontrado = false;
+        System.out.println("---== PRODUTO ENCONTRADO ==---");
+        System.out.printf("| %-3s | %-10s | %-10s | %.2f | %-8s |\n", "ID", "Nome", "Categoria", "Preço", "Quantidade");
+        System.out.println("|-----|------------|------------|-------|----------|");
+        for (Produto produto : produtos) {
+            if (produto.getPreco() == preco) {
+                System.out.printf("| %-3d | %-10s | %-10s | %.2f | %-8d |\n", produto.getIdProd(), produto.getNomeProd(), produto.getCategoria(), produto.getPreco(), produto.getQuantidade());
+                produtoEncontrado = true;
+            }
+        }
+        if (!produtoEncontrado) {
+            System.out.println("Produto nao encontrado.");
+        }
+    }
     /**
      * Remove um produto existente.
      *
@@ -314,10 +354,103 @@ public class GerenciadorProdutos implements Interface {
     }
 
 
+
+/**
+ * Modifica as informações de um produto existente.
+ *
+ * Permite ao usuário alterar o nome, categoria, preço e quantidade de um 
+ * produto já cadastrado no sistema. 
+ * 
+ * O método exibe um menu para que o usuário selecione o produto a ser alterado 
+ * por meio de seu ID. 
+ * 
+ * Após a seleção, o sistema solicita as novas informações do produto e as 
+ * atualiza na lista de produtos.
+ */
     @Override
-    public void alterar() {};
+    public void alterar() {
+        Integer op = 1, aspecto;
+
+        do{
+            System.out.println("---== MENU DE ALTERAÇÃO ==---");
+            System.out.println("Qual o id do produto que deseja alterar?");
+            int idP = sc.nextInt();
+
+            if (getProdutoById(idP) == null){
+                System.out.println("Produto não encontrado!");
+                continue;
+            }
+
+            System.out.println("Produto selecionado: " + getProdutoById(idP).getNomeProd());
+            System.out.println("Qual aspecto deseja alterar? \n 1 - Nome \n 2 - Categoria \n 3 - Preço \n 4 - Quantidade");
+            aspecto = sc.nextInt();
+            sc.nextLine();
+            switch (aspecto) {
+                case 1:
+                    System.out.println("Qual o nome do produto?");
+                    String nome = sc.nextLine();
+                    getProdutoById(idP).setNomeProd(nome);
+                    break;
+                case 2:
+                    System.out.println("Qual a categoria do produto? (Digite o nome da categoria)");
+                    System.out.println("1 - Alimento \n 2 - Brinquedo \n 3 - Higiene \n 4 - Acessório");
+                    String categoria = sc.nextLine();
+                    getProdutoById(idP).setCategoria(categoria);
+                    break;
+                case 3:
+                    System.out.println("Qual o preco do produto?");
+                    double preco = sc.nextDouble();
+                    getProdutoById(idP).setPreco(preco);
+                    break;
+                case 4:
+                    System.out.println("Qual a quantidade do produto?");
+                    int quantidade = sc.nextInt();
+                    getProdutoById(idP).setQuantidade(quantidade);
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+
+            System.out.println("Deseja alterar outro produto? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
+        } while (op != 0);
+    }
+
     @Override
-    public void buscar() {};
+    public void buscar() {
+        int op = 1;
+
+        do {
+
+            System.out.println("---== MENU DE BUSCA ==---");
+            System.out.println("Deseja buscar por:  \n 1 - Nome \n 2 - Preço");
+            int aspecto = sc.nextInt();
+            sc.nextLine();
+            String busca;
+            switch (aspecto) {
+                case 1:
+                    System.out.println("Qual o nome do produto? ");
+                    busca = sc.nextLine();
+                    getByNomeProd(busca);
+
+                    break;
+                case 2:
+                    System.out.println("Qual o preco do produto? ");
+                    busca = sc.nextLine();
+                    Double preco = Double.parseDouble(busca);
+                    getByPreco(preco); 
+                    break;                  
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+            System.out.println("Deseja buscar outro produto? \n 1 - Sim \n 0 - Não");
+            op = sc.nextInt();
+        } while (op != 0);
+    };
+
     /**
      * Inicializa o sistema com uma lista de produtos predefinidos.
      *
