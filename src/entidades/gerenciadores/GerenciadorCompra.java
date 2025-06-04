@@ -227,14 +227,14 @@ public class GerenciadorCompra implements Interface
      */
     @Override
     public void remover() {
-        // Pegar qual animal deseja remover
+        // Pegar qual produto deseja remover
         int op = 1;
         do {
             System.out.println("---== MENU DE REMOÇÃO ==---");
             System.out.println("Qual o ID da compra que deseja remover? ");
             int id = sc.nextInt();
 
-            // Verificar se o animal existe
+            // Verificar se o produto existe
             // Verificar se ele estar na lista, pegar ele da lista e remover
             Produto produtoCarrinho = getById(id);
             if (produtoCarrinho == null) {
