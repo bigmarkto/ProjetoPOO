@@ -400,9 +400,6 @@ public class GerenciadorAnimal implements Interface {
         String[] nomesCoelho = {"Floquinho", "Cenoura", "Snowball", "Bunny", "Puffy", "Hopper", "Marshmallow"};
         String[] nomesDonos = {"João", "Maria", "Ana", "Pedro", "Lucas", "Sofia", "Clara"};
         Random random = new Random();
-        listaAnimais.add(new Cachorro("Buddy", 3, new Dono("Alice")));
-        listaAnimais.add(new Gato("Mingau", 1, new Dono("Magali")));
-
         // Adiciona 7 animais de cada tipo
         for (int i = 0; i < 7; i++) {
             // Cachorros

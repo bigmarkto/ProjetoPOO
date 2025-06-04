@@ -168,7 +168,6 @@ public class GerenciadorCompra implements Interface
                 continue;
             }
 
-            Produto produto = gerenciadorProdutos.getProdutoById(ID); 
 
             System.out.println("Produto Selecionado: " + getById(ID).getNomeProd());
 

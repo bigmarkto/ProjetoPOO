@@ -163,11 +163,11 @@ public class GerenciadorProdutos implements Interface {
     protected void getByPreco(Double preco) {
         boolean produtoEncontrado = false;
         System.out.println("---== PRODUTO ENCONTRADO ==---");
-        System.out.printf("| %-3s | %-10s | %-10s | %.2f | %-8s |\n", "ID", "Nome", "Categoria", "Preço", "Quantidade");
+        System.out.printf("| %-3s | %-10s | %-10s | %s | %-8s |\n", "ID", "Nome", "Categoria", "Preço", "Quantidade");
         System.out.println("|-----|------------|------------|-------|----------|");
         for (Produto produto : produtos) {
             if (produto.getPreco() == preco) {
-                System.out.printf("| %-3d | %-10s | %-10s | %.2f | %-8d |\n", produto.getIdProd(), produto.getNomeProd(), produto.getCategoria(), produto.getPreco(), produto.getQuantidade());
+                System.out.printf("| %-3d | %-10s | %-10s | %s | %-8d |\n", produto.getIdProd(), produto.getNomeProd(), produto.getCategoria(), produto.getPreco(), produto.getQuantidade());
                 produtoEncontrado = true;
             }
         }
@@ -437,7 +437,7 @@ public class GerenciadorProdutos implements Interface {
                     break;
                 case 2:
                     System.out.println("Qual o preco do produto? ");
-                    busca = sc.nextLine();
+                    busca = sc.nextLine().replace(",", ".");
                     Double preco = Double.parseDouble(busca);
                     getByPreco(preco); 
                     break;                  

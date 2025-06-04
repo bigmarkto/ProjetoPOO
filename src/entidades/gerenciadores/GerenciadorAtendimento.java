@@ -1,6 +1,7 @@
 package entidades.gerenciadores;
 
 import entidades.Animal;
+import entidades.classes_animais.*;
 import entidades.Atendimento;
 import entidades.Dono;
 import entidades.interfaces.Interface;
@@ -28,6 +29,12 @@ public class GerenciadorAtendimento implements Interface {
      *
      * O loop eh interrompido quando o usuario escolhe a opcao de sair.
      */
+
+     public void iniciarSistema() {
+        listaAtendimentos.add(new Atendimento(1, new Dono("João"), new Cachorro("Rex", 10, new Dono("João")), "2023-10-01 10:00", "Vacinação"));
+        listaAtendimentos.add(new Atendimento(2, new Dono("Maria"), new Coelho("Bobby", 5, new Dono("Maria")), "2023-10-02 11:00", "Consulta"));
+     }
+
     @Override
     public void cadastrar() {
 

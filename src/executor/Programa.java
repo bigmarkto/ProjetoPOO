@@ -25,6 +25,7 @@ public class Programa {
         GerenciadorProdutos gerenciadorProdutos = new GerenciadorProdutos();
         gerenciadorProdutos.iniciarProdutos();
         GerenciadorAtendimento gerenciadorAtendimento = new GerenciadorAtendimento();
+        gerenciadorAtendimento.iniciarSistema();
         GerenciadorCompra gerenciadorCompra = new GerenciadorCompra();        
 
         do {
